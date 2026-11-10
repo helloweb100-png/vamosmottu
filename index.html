@@ -155,11 +155,13 @@
         <p class="hero__lead" data-hero>Escribe el código <strong>VAMOSMOTTU</strong> al registrarte en la app y arranca con $350 de descuento en tu pago inicial. Rueda desde <strong>$55 al día</strong>, sin aval, sin buró y sin plazo forzoso.</p>
 
         <div class="hero__cta" data-hero>
-          <a class="btn btn--primary btn--lg js-wa" href="#contacto" data-magnetic data-msg="Hola, quiero mis $350 de descuento con el código VAMOSMOTTU. ¿Me ayudan a rentar mi Mottu?">
+          <a class="btn btn--primary btn--lg" href="https://www.descuento.vamosmottu.com" target="_blank" rel="noopener noreferrer" data-magnetic>
             <span>Quiero mis $350 de descuento</span><svg class="ic btn__ic"><use href="#i-arrow"/></svg>
           </a>
           <a class="btn btn--ghost btn--lg" href="#como-funciona" data-magnetic><span>Así funciona</span></a>
         </div>
+
+        <p class="visits" id="visitas" hidden><span class="visits__dot" aria-hidden="true"></span><b id="visitasNum">0</b> visitas</p>
 
         <div class="ticket" data-hero>
           <span class="ticket__icon"><svg class="ic"><use href="#i-ticket"/></svg></span>
@@ -431,6 +433,66 @@
             <a class="btn btn--primary js-wa" href="#contacto" data-msg="Hola, quiero el plan Completo ($125 al día, 2 años, al final la moto es mía) con el código VAMOSMOTTU."><span>Quiero este plan</span></a>
           </div>
         </article>
+      </div>
+
+      <!-- Plazos y planes vigentes de Mottu (datos entregados por el cliente) -->
+      <div class="ptabs" id="plazos" data-reveal>
+        <header class="ptabs__head">
+          <h3>Plazos y planes vigentes de Mottu</h3>
+          <p>Precio por día y por semana según el modelo, el estado de la moto y el plazo.</p>
+        </header>
+
+        <div class="ptabs__grid">
+          <section class="ptab" aria-labelledby="pt-mi">
+            <h4 class="ptab__t" id="pt-mi">Plan Mi Mottu</h4>
+            <table>
+              <thead><tr><th scope="col">Plazo</th><th scope="col">Diario</th><th scope="col">Semanal</th></tr></thead>
+              <tbody>
+                <tr class="ptab__grp"><th colspan="3" scope="rowgroup"><span>Modelo Sport MX</span><em class="est est--usada">Usada</em></th></tr>
+                <tr><th scope="row">A 86 semanas</th><td>$55</td><td>$385</td></tr>
+              </tbody>
+              <tbody>
+                <tr class="ptab__grp"><th colspan="3" scope="rowgroup"><span>Modelo Sport MX</span><em class="est est--semi">Semi-nueva</em></th></tr>
+                <tr><th scope="row">A 104 semanas</th><td>$60</td><td>$420</td></tr>
+              </tbody>
+              <tbody>
+                <tr class="ptab__grp"><th colspan="3" scope="rowgroup"><span>Modelo Sport ESD</span><em class="est est--semi">Semi-nueva</em></th></tr>
+                <tr><th scope="row">A 104 semanas</th><td>$67</td><td>$469</td></tr>
+                <tr><th scope="row">A 129 semanas</th><td>$61</td><td>$427</td></tr>
+              </tbody>
+              <tbody>
+                <tr class="ptab__grp"><th colspan="3" scope="rowgroup"><span>Modelo Sport ESD</span><em class="est est--nueva">Nueva</em></th></tr>
+                <tr><th scope="row">A 104 semanas</th><td>$75</td><td>$525</td></tr>
+                <tr><th scope="row">A 156 semanas</th><td>$67</td><td>$469</td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="ptab ptab--full" aria-labelledby="pt-full">
+            <h4 class="ptab__t" id="pt-full">Plan Mottu Completo</h4>
+            <table>
+              <thead><tr><th scope="col">Plazo</th><th scope="col">Diario</th><th scope="col">Semanal</th></tr></thead>
+              <tbody>
+                <tr class="ptab__grp"><th colspan="3" scope="rowgroup"><span>Modelo Sport MX <small>(sin opción de compra)</small></span><em class="est est--usada">Usada</em></th></tr>
+                <tr><th scope="row">A 13 semanas</th><td>$100</td><td>$700</td></tr>
+                <tr><th scope="row">A 52 semanas</th><td>$80</td><td>$560</td></tr>
+              </tbody>
+              <tbody>
+                <tr class="ptab__grp"><th colspan="3" scope="rowgroup"><span>Modelo Sport ESD</span><em class="est est--semi">Semi-nueva</em></th></tr>
+                <tr><th scope="row">A 104 semanas</th><td>$107</td><td>$749</td></tr>
+              </tbody>
+              <tbody>
+                <tr class="ptab__grp"><th colspan="3" scope="rowgroup"><span>Modelo Sport ESD</span><em class="est est--nueva">Nueva</em></th></tr>
+                <tr><th scope="row">A 104 semanas</th><td>$125</td><td>$875</td></tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
+
+        <ul class="ptabs__notes">
+          <li>Nota: si tienes un código antiguo en tu cuenta, avísanos y con gusto te lo actualizamos.</li>
+          <li>Consulta costos y plazos vigentes dentro de nuestra aplicación Mottu.</li>
+        </ul>
       </div>
 
       <!-- Simulador -->

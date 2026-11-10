@@ -219,6 +219,40 @@
     $$('[data-count]').forEach((el) => io.observe(el));
   }
 
+  /* ---------- Contador de visitas ---------- */
+  // Servicio gratuito Abacus (sin cuenta). Suma 1 visita por sesión del navegador;
+  // en las demás cargas solo lee el total. Si falla o no hay red, el contador no se muestra.
+  const VISITAS_API = 'https://abacus.jasoncameron.dev';
+  const VISITAS_NS = 'vm-0cff48f675596f85';
+  const VISITAS_KEY = 'visitas';
+  function setupVisits() {
+    const box = $('#visitas');
+    const num = $('#visitasNum');
+    if (!box || !num || !('fetch' in window)) return;
+    let counted = false;
+    try { counted = sessionStorage.getItem('vm-visita') === '1'; } catch (e) { /* sin storage: cuenta en cada carga */ }
+    const ctrl = 'AbortController' in window ? new AbortController() : null;
+    const timer = ctrl ? setTimeout(() => ctrl.abort(), 6000) : 0;
+    fetch(`${VISITAS_API}/${counted ? 'get' : 'hit'}/${VISITAS_NS}/${VISITAS_KEY}`, ctrl ? { signal: ctrl.signal } : undefined)
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error('visitas ' + r.status))))
+      .then((d) => {
+        const total = Number(d && d.value);
+        if (!Number.isFinite(total) || total < 0) return;
+        if (!counted) { try { sessionStorage.setItem('vm-visita', '1'); } catch (e) { /* sin storage */ } }
+        box.hidden = false;
+        if (reduce || total < 2) { num.textContent = total.toLocaleString('es-MX'); return; }
+        const t0 = performance.now();
+        const step = (now) => {
+          const k = clamp((now - t0) / 1100, 0, 1);
+          num.textContent = Math.round(total * (1 - Math.pow(1 - k, 3))).toLocaleString('es-MX');
+          if (k < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      })
+      .catch(() => { /* sin contador, la página sigue igual */ })
+      .then(() => clearTimeout(timer));
+  }
+
   /* ---------- Copiar código ---------- */
   function setupCopy() {
     $$('[data-copy]').forEach((btn) => {
@@ -721,6 +755,7 @@
   setupParticles();
   setupPointerFx();
   setupSim();
+  setupVisits();
   setupFaq();
   setupForm();
   setupVideo();
